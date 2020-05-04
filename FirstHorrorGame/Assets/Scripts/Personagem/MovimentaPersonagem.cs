@@ -22,11 +22,14 @@ namespace CSF
         public bool estaAbaixado;
         public bool levantarBloqueado;
         public float alturaLevantado, alturaAbaixado, posicaoCameraEmPe, posicaoCameraAbaixado;
+        float velocidadeCorrente = 1f;
         RaycastHit hit;
+        public bool estaCorrendo;
 
         // Start is called before the first frame update
         void Start()
         {
+            estaCorrendo = false;
             controle = GetComponent<CharacterController>();
             estaAbaixado = false;
             cameraTransform = Camera.main.transform;
@@ -35,38 +38,74 @@ namespace CSF
         // Update is called once per frame
         void Update()
         {
-          estaNoChao = Physics.CheckSphere(checaChao.position,raioEsfera, chaoMask);  
-
-        if(estaNoChao && velocidadeCai.y < 0)
-        {
-            velocidadeCai.y = -2f;
+            Verificacoes();
+            MovimentoAbaixa();
+            Inputs();
+            
         }
-          float x = Input.GetAxis("Horizontal");
-          float z = Input.GetAxis("Vertical");
 
-          Vector3 move = (transform.right * x + transform.forward * z).normalized;
+        void Verificacoes()
+        {
+            estaNoChao = Physics.CheckSphere(checaChao.position,raioEsfera, chaoMask);  
 
-          controle.Move(move * velocidade * Time.deltaTime);
+            if(estaNoChao && velocidadeCai.y < 0)
+            {
+                velocidadeCai.y = -2f;
+            }
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-          if(Input.GetButtonDown("Jump") && estaNoChao)
-          {
-              velocidadeCai.y = Mathf.Sqrt(alturaPulo * -2f * gravidade);
-          }
+            Vector3 move = (transform.right * x + transform.forward * z).normalized;
+
+            controle.Move(move * velocidade * Time.deltaTime);
 
             velocidadeCai.y += gravidade * Time.deltaTime;
             controle.Move(velocidadeCai * Time.deltaTime);
 
-            if(estaAbaixado)
+        }
+        void Inputs()
+        {
+            if(Input.GetKey(KeyCode.LeftShift) && estaNoChao && !estaAbaixado)
             {
-                ChecaBloqueioAbaixado();
+                estaCorrendo = true;
+                velocidade = 9;
             }
-
+            else
+            {
+                estaCorrendo = false;
+            }
+           
+            if(Input.GetButtonDown("Jump") && estaNoChao)
+            {
+                velocidadeCai.y = Mathf.Sqrt(alturaPulo * -2f * gravidade);
+            }
             if(Input.GetKeyDown(KeyCode.LeftControl))
             {
                 Abaixa();
             }
         }
 
+        void MovimentoAbaixa()
+        {
+            controle.center = Vector3.down * (alturaLevantado - controle.height) / 2f;
+
+            if (estaAbaixado)
+            {
+                controle.height = Mathf.Lerp(controle.height, alturaAbaixado, Time.deltaTime * 3);
+                float novoY = Mathf.SmoothDamp(cameraTransform.localPosition.y, posicaoCameraAbaixado, ref velocidadeCorrente, Time.deltaTime * 3);
+                cameraTransform.localPosition = new Vector3(0, novoY, 0);
+                velocidade = 3f;
+                ChecaBloqueioAbaixado();
+            }
+            else
+            {
+                controle.height = Mathf.Lerp(controle.height, alturaLevantado, Time.deltaTime * 3);
+                float novoY = Mathf.SmoothDamp(cameraTransform.localPosition.y, posicaoCameraEmPe, ref velocidadeCorrente, Time.deltaTime * 3);
+                cameraTransform.localPosition = new Vector3(0, novoY, 0);
+                velocidade = 6f;
+            }
+        }
+        
         void Abaixa()
         {
             if(levantarBloqueado || estaNoChao == false)
@@ -75,16 +114,6 @@ namespace CSF
             }
 
             estaAbaixado = !estaAbaixado;
-            if(estaAbaixado)
-            {
-                controle.height = alturaAbaixado;
-                cameraTransform.localPosition = new Vector3(0,posicaoCameraAbaixado,0);
-            }
-            else
-            {
-                controle.height = alturaLevantado;
-                cameraTransform.localPosition = new Vector3(0,posicaoCameraEmPe,0);
-            }
         }
 
         void ChecaBloqueioAbaixado()

@@ -616,7 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controle: {fileID: 0}
   velocidade: 6
-  alturaPulo: 3
+  alturaPulo: 2
   gravidade: -20
   checaChao: {fileID: 152826336}
   raioEsfera: 0.4
@@ -628,9 +628,10 @@ MonoBehaviour:
   estaAbaixado: 0
   levantarBloqueado: 0
   alturaLevantado: 2
-  alturaAbaixado: 1.5
+  alturaAbaixado: 1
   posicaoCameraEmPe: 1
-  posicaoCameraAbaixado: 0.5
+  posicaoCameraAbaixado: 0.15
+  estaCorrendo: 0
 --- !u!143 &568804143
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1057,8 +1058,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempo: 0
-  velocidade: 0.05
-  forca: 0.1
+  velocidade: 0.2
+  forca: 0.15
   pontoDeOrigem: 0
   audioClip:
   - {fileID: 8300000, guid: 8fa82d5fe9bbfb84182c0372d1df754f, type: 3}
@@ -1409,6 +1410,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90986e28f321c2e4092882a5dfb08a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faisca: {fileID: 7423203385707777643, guid: 782ca934e5a0f404093cd002c97daa2b, type: 3}
+  buraco: {fileID: 795939106184328839, guid: 052aaabf5767f2d4abe32eaf28f1e7f3, type: 3}
+  fumaca: {fileID: 3126457868495115394, guid: 5bc8ba72d4bd799489b2f6190634937c, type: 3}
+  efeitoTiro: {fileID: 3126457868495115394, guid: 886586e5c00f99e44b327e5886a5986d,
+    type: 3}
+  posEfeitoTiro: {fileID: 1201929558}
+--- !u!1 &1201929558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1201929559}
+  m_Layer: 0
+  m_Name: EfeitoTiroPosicao
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1201929559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201929558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.07, z: 0.195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 860851329}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1339662870
 GameObject:
   m_ObjectHideFlags: 0

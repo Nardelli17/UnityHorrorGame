@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CSF;
 
 public class MovimentoCabeca : MonoBehaviour
 {
     public float tempo = 0.0f;
-    public float velocidade = 0.05f;
-    public float forca = 0.1f;
+    public float velocidade = 0.2f;
+    public float forca = 0.15f;
     public float pontoDeOrigem = 0.0f;
 
     float cortaOnda;
@@ -17,11 +18,13 @@ public class MovimentoCabeca : MonoBehaviour
     AudioSource audioSource;
     public AudioClip[] audioClip;
     public int indexPassos;
+    MovimentaPersonagem scriptMovimenta;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        scriptMovimenta = GetComponentInParent<MovimentaPersonagem>();
         audioSource = GetComponent<AudioSource>();
         indexPassos = 0;
     }
@@ -66,11 +69,12 @@ public class MovimentoCabeca : MonoBehaviour
         transform.localPosition = salvaPosicao;
 
         SomPassos();
+        AtualizaCabeca();
     }
 
     void SomPassos()
     {
-        if(cortaOnda <= -0.95f && !audioSource.isPlaying)
+        if(cortaOnda <= -0.95f && !audioSource.isPlaying && scriptMovimenta.estaNoChao)
         {
             audioSource.clip = audioClip[indexPassos];
             audioSource.Play();
@@ -80,6 +84,25 @@ public class MovimentoCabeca : MonoBehaviour
             {
                 indexPassos = 0;
             }
+        }
+    }
+
+    void AtualizaCabeca()
+    {
+        if(scriptMovimenta.estaCorrendo)
+        {
+            velocidade = 0.25f;
+            forca = 0.25f;
+        }
+        else if(scriptMovimenta.estaAbaixado)
+        {
+            velocidade = 0.13f;
+            forca = 0.13f;
+        }
+        else
+        {
+            velocidade = 0.2f;
+            forca = 0.15f;
         }
     }
 }
