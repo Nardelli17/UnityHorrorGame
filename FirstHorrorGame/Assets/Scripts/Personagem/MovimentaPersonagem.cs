@@ -1,30 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CSF;
 
 namespace CSF 
 {
     public class MovimentaPersonagem : MonoBehaviour
     {
+
+        [Header("Config Personagem")]
         public CharacterController controle;
         public float velocidade = 6f;
         public float alturaPulo = 3f;
         public float gravidade = -20f;
+        public bool estaCorrendo;
 
+        [Header("Verifica Chao")]
         public Transform checaChao;
         public float raioEsfera = 0.4f;
         public LayerMask chaoMask;
         public bool estaNoChao;
-
         Vector3 velocidadeCai;
 
+        [Header("Verifica Abaixado")]
         public Transform cameraTransform;
         public bool estaAbaixado;
         public bool levantarBloqueado;
         public float alturaLevantado, alturaAbaixado, posicaoCameraEmPe, posicaoCameraAbaixado;
         float velocidadeCorrente = 1f;
         RaycastHit hit;
-        public bool estaCorrendo;
+
+        [Header("Status Personagem")]
+        public float hp = 100;
+        public float stamina = 100;
+        public bool cansado;
+        public Respiracao scriptResp;
+       
+        
 
         // Start is called before the first frame update
         void Start()
@@ -69,10 +81,14 @@ namespace CSF
             {
                 estaCorrendo = true;
                 velocidade = 9;
+                stamina -= 0.3f;
+                stamina = Mathf.Clamp(stamina, 0, 100);
             }
             else
             {
                 estaCorrendo = false;
+                stamina += 0.1f;
+                stamina = Mathf.Clamp(stamina, 0, 100);
             }
            
             if(Input.GetButtonDown("Jump") && estaNoChao)
