@@ -41,6 +41,7 @@ namespace CSF
         // Start is called before the first frame update
         void Start()
         {
+            cansado = false;
             estaCorrendo = false;
             controle = GetComponent<CharacterController>();
             estaAbaixado = false;
@@ -53,6 +54,7 @@ namespace CSF
             Verificacoes();
             MovimentoAbaixa();
             Inputs();
+            CondicaoPlayer();
             
         }
 
@@ -77,7 +79,7 @@ namespace CSF
         }
         void Inputs()
         {
-            if(Input.GetKey(KeyCode.LeftShift) && estaNoChao && !estaAbaixado)
+            if(Input.GetKey(KeyCode.LeftShift) && estaNoChao && !estaAbaixado && !cansado)
             {
                 estaCorrendo = true;
                 velocidade = 9;
@@ -149,6 +151,20 @@ namespace CSF
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(checaChao.position,raioEsfera);
+        }
+
+        void CondicaoPlayer()
+        {
+            if(stamina == 0)
+            {
+                cansado = true;
+                scriptResp.forcaResp = 5;
+            }
+
+            if(stamina > 40)
+            {
+                cansado = false;
+            }
         }
     }
 }

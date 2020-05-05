@@ -13,6 +13,8 @@ public class Glock : MonoBehaviour
     public GameObject fumaca;
     public GameObject efeitoTiro;
     public GameObject posEfeitoTiro;
+
+    public ParticleSystem rastroBala;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class Glock : MonoBehaviour
         {
             if(!estaAtirando)
             {
+                rastroBala.Play();
                 estaAtirando = true;
                 StartCoroutine(Atirando());
             }
@@ -58,7 +61,7 @@ public class Glock : MonoBehaviour
            }
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         estaAtirando =  false;
     }
 
