@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using CSF;
+
 
 namespace CSF
 {
@@ -11,10 +11,15 @@ namespace CSF
     {
         public Slider sliderHP, sliderStamina;
         public MovimentaPersonagem scriptMovimenta;
+        public Text municao;
+        public Image imagemModoTiro;
+        public Sprite[] spriteModoTiro;
         // Start is called before the first frame update
         void Start()
         {
             scriptMovimenta = GameObject.FindWithTag("Player").GetComponent<MovimentaPersonagem>();
+            municao.enabled = true;
+            imagemModoTiro.enabled = true;
         }
 
         // Update is called once per frame

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CSF;
 
 public class Glock : MonoBehaviour
 {
@@ -21,23 +22,49 @@ public class Glock : MonoBehaviour
 
     public int carregador = 3;
     public int municao = 17;
+
+    UiManager uiScript;
+    public GameObject posUI;
+
+    public bool automatico;
     // Start is called before the first frame update
     void Start()
     {
+        automatico = false;
         estaAtirando = false;
         anim = GetComponent<Animator>();
         audioArma = GetComponent<AudioSource>();
+        uiScript = GameObject.FindWithTag("uiManager").GetComponent<UiManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        uiScript.municao.transform.position = Camera.main.WorldToScreenPoint(posUI.transform.position);
+        uiScript.municao.text = municao.ToString() + "/" + carregador.ToString();
+
         if(anim.GetBool("ocorreAcao"))
         {
             return;
         }
 
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetKeyDown(KeyCode.Q))
+        { 
+            audioArma.clip = sonsArma[1];
+            audioArma.Play();
+            automatico = !automatico;
+
+            if(automatico)
+            {
+                uiScript.imagemModoTiro.sprite = uiScript.spriteModoTiro[1];
+            }
+            else
+            {
+                uiScript.imagemModoTiro.sprite = uiScript.spriteModoTiro[0];
+            }
+        }
+
+        if(Input.GetButtonDown("Fire1") || automatico?Input.GetButton("Fire1"):false)
         {
             if(!estaAtirando && municao > 0)
             {
