@@ -14,6 +14,10 @@ namespace CSF
         public float alturaPulo = 3f;
         public float gravidade = -20f;
         public bool estaCorrendo;
+        public AudioClip[] audiosGerais;
+        AudioSource audioPersonagem;
+        bool noAr;
+
 
         [Header("Verifica Chao")]
         public Transform checaChao;
@@ -46,6 +50,8 @@ namespace CSF
             controle = GetComponent<CharacterController>();
             estaAbaixado = false;
             cameraTransform = Camera.main.transform;
+            audioPersonagem  = GetComponent<AudioSource>();
+            noAr = false;
         }
 
         // Update is called once per frame
@@ -55,7 +61,24 @@ namespace CSF
             MovimentoAbaixa();
             Inputs();
             CondicaoPlayer();
+            SomPulo();
             
+        }
+
+        void SomPulo()
+        {
+            if (!estaNoChao)
+            {
+                noAr = true;
+            }
+
+            if (estaNoChao && noAr)
+            {
+                noAr = false;
+                audioPersonagem.clip = audiosGerais[1];
+                audioPersonagem.Play();
+
+            }
         }
 
         void Verificacoes()
@@ -96,6 +119,8 @@ namespace CSF
             if(Input.GetButtonDown("Jump") && estaNoChao)
             {
                 velocidadeCai.y = Mathf.Sqrt(alturaPulo * -2f * gravidade);
+                audioPersonagem.clip = audiosGerais[0];
+                audioPersonagem.Play();
             }
             if(Input.GetKeyDown(KeyCode.LeftControl))
             {

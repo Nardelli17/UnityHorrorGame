@@ -121,7 +121,7 @@ public class Glock : MonoBehaviour
            }
         }
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
         estaAtirando =  false;
     }
 
