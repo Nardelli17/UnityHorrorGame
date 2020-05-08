@@ -24,9 +24,11 @@ public class Glock : MonoBehaviour
     public int municao = 17;
 
     UiManager uiScript;
+    MovimentaArma movimentaArmasScript;
     public GameObject posUI;
 
     public bool automatico;
+    public float numeroAleatorioMira;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,7 @@ public class Glock : MonoBehaviour
         anim = GetComponent<Animator>();
         audioArma = GetComponent<AudioSource>();
         uiScript = GameObject.FindWithTag("uiManager").GetComponent<UiManager>();
+        movimentaArmasScript = GetComponentInParent<MovimentaArma>();
     }
 
     // Update is called once per frame
@@ -94,6 +97,25 @@ public class Glock : MonoBehaviour
             carregador--;
             municao = 17;
         }
+
+        if(Input.GetButton("Fire2"))
+        {
+            anim.SetBool("mira", true);
+            posUI.transform.localPosition = new Vector3(0f, 0.1f, -0.2f);
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 45, Time.deltaTime * 10);
+            uiScript.mira.gameObject.SetActive(false);
+            movimentaArmasScript.valor = 0.01f;
+            numeroAleatorioMira = 0f;
+        }
+        else
+        {
+            anim.SetBool("mira", false);
+            posUI.transform.localPosition = new Vector3(-0.02f, 0.1f, -0.2f);
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, Time.deltaTime * 10);
+            uiScript.mira.gameObject.SetActive(true);
+            movimentaArmasScript.valor = 0.1f;
+            numeroAleatorioMira = 0.05f;
+        }
     }
 
     IEnumerator Atirando()
@@ -107,8 +129,9 @@ public class Glock : MonoBehaviour
         GameObject efeitoTiroObj = Instantiate(efeitoTiro, posEfeitoTiro.transform.position, posEfeitoTiro.transform.rotation);
         efeitoTiroObj.transform.parent = posEfeitoTiro.transform;
 
-        if(Physics.Raycast(new Vector3(ray.origin.x + Random.Range(-0.05f,0.05f), 
-        ray.origin.y + Random.Range(-0.05f,0.05f), ray.origin.z), Camera.main.transform.forward, out hit ))
+        if(Physics.Raycast(new Vector3(ray.origin.x + Random.Range(-numeroAleatorioMira,numeroAleatorioMira), 
+        ray.origin.y + Random.Range(-numeroAleatorioMira,numeroAleatorioMira), ray.origin.z)
+        , Camera.main.transform.forward, out hit ))
         {
             InstanciaEfeitos();
            if(hit.transform.tag == "objArrasta")
@@ -121,7 +144,7 @@ public class Glock : MonoBehaviour
            }
         }
 
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.7f);
         estaAtirando =  false;
     }
 
