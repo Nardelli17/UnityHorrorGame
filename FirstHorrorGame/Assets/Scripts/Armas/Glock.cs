@@ -29,6 +29,8 @@ public class Glock : MonoBehaviour
 
     public bool automatico;
     public float numeroAleatorioMira;
+
+    public float valorMira;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,7 @@ public class Glock : MonoBehaviour
         audioArma = GetComponent<AudioSource>();
         uiScript = GameObject.FindWithTag("uiManager").GetComponent<UiManager>();
         movimentaArmasScript = GetComponentInParent<MovimentaArma>();
+        valorMira = 250;
     }
 
     // Update is called once per frame
@@ -46,11 +49,36 @@ public class Glock : MonoBehaviour
         uiScript.municao.transform.position = Camera.main.WorldToScreenPoint(posUI.transform.position);
         uiScript.municao.text = municao.ToString() + "/" + carregador.ToString();
 
+        ModificaMira();
         if(anim.GetBool("ocorreAcao"))
         {
             return;
         }
 
+       Automatico();
+       Atira();
+       Recarrega();
+       Mira();
+
+    }
+
+    void ModificaMira()
+    {
+         if (estaAtirando)
+        {
+            valorMira = Mathf.Lerp(valorMira, 350, Time.deltaTime * 20);
+            uiScript.mira.sizeDelta = new Vector2(valorMira, valorMira);
+        }
+        else
+        {
+            valorMira = Mathf.Lerp(valorMira, 250, Time.deltaTime * 20);
+            uiScript.mira.sizeDelta = new Vector2(valorMira, valorMira);
+        }
+    }
+
+    void Automatico()
+    {
+        
         if(Input.GetKeyDown(KeyCode.Q))
         { 
             audioArma.clip = sonsArma[1];
@@ -66,8 +94,11 @@ public class Glock : MonoBehaviour
                 uiScript.imagemModoTiro.sprite = uiScript.spriteModoTiro[0];
             }
         }
+    }
 
-        if(Input.GetButtonDown("Fire1") || automatico?Input.GetButton("Fire1"):false)
+    void Atira()
+    {
+         if(Input.GetButtonDown("Fire1") || automatico?Input.GetButton("Fire1"):false)
         {
             if(!estaAtirando && municao > 0)
             {
@@ -90,15 +121,21 @@ public class Glock : MonoBehaviour
                 audioArma.Play();
             }
         }
+    }
 
-        if(Input.GetKeyDown(KeyCode.R) && carregador > 0 && municao < 17)
+    void Recarrega()
+    {
+         if(Input.GetKeyDown(KeyCode.R) && carregador > 0 && municao < 17)
         {
             anim.Play("RecarregaGlock");
             carregador--;
             municao = 17;
         }
+    }
 
-        if(Input.GetButton("Fire2"))
+    void Mira()
+    {
+         if(Input.GetButton("Fire2"))
         {
             anim.SetBool("mira", true);
             posUI.transform.localPosition = new Vector3(0f, 0.1f, -0.2f);
@@ -168,4 +205,5 @@ public class Glock : MonoBehaviour
         audioArma.clip = sonsArma[2];
         audioArma.Play();
     }
+
 }

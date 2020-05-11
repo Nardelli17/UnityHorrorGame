@@ -14,7 +14,7 @@ namespace CSF
         public Text municao;
         public Image imagemModoTiro;
         public Sprite[] spriteModoTiro;
-        public Image mira;
+        public RectTransform mira;
         // Start is called before the first frame update
         void Start()
         {
