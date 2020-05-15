@@ -7,6 +7,8 @@ TagManager:
   - objPega
   - objArrasta
   - uiManager
+  - cabecaDesliza
+  - inimigo
   layers:
   - Default
   - TransparentFX
