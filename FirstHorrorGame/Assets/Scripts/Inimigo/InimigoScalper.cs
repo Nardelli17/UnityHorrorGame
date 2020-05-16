@@ -10,12 +10,15 @@ public class InimigoScalper : MonoBehaviour
     public GameObject player;
     public float distanciaDoAtaque = 2;
     public float distanciaDoPlayer;
-    public float velocidade = 5;
+    public float velocidade = 4;
     Animator anim;
     public int hp = 100;
     RagDoll ragScript;
 
+    public GameObject objDesliza;
     public bool estaMorto;
+    public bool bravo;
+    public Renderer render;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class InimigoScalper : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
         ragScript = GetComponent<RagDoll>();
+        render = GetComponentInChildren<Renderer>();
 
         estaMorto = false;
         ragScript.DesativaRagdoll();
@@ -33,16 +37,30 @@ public class InimigoScalper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distanciaDoPlayer = Vector3.Distance(transform.position, player.transform.position);
-        VaiAtrasJogador();
-        OlhaParaPlayer();
-        
-        if (hp <= 0 && !estaMorto)
+        if(!estaMorto)
         {
-            estaMorto = true;
-            ParaDeAndar();
-            ragScript.AtivaRagdoll();
-            this.enabled = false;
+            distanciaDoPlayer = Vector3.Distance(transform.position, player.transform.position);
+            VaiAtrasJogador();
+            OlhaParaPlayer();
+
+            if(hp <= 50 && !bravo)
+            {
+                bravo = true;
+                render.material.color = Color.red;
+                velocidade = 6;
+                
+            }
+
+            if (hp <= 0 && !estaMorto)
+            {
+                render.material.color = Color.white;
+                objDesliza.SetActive(false);
+                estaMorto = true;
+                ParaDeAndar();
+                navMesh.isStopped = false;
+                ragScript.AtivaRagdoll();
+                
+            }
         }
     }
 
@@ -59,7 +77,7 @@ public class InimigoScalper : MonoBehaviour
 
         //inimigo percebe player e segue
         //Revisar essa parte do código
-        if(distanciaDoPlayer < 10 )
+        if(distanciaDoPlayer < 10)
         {
         anim.SetBool("vaiParar",false);
         anim.SetBool("paraAtaque",true);
@@ -70,7 +88,7 @@ public class InimigoScalper : MonoBehaviour
             if(distanciaDoPlayer <= distanciaDoAtaque)
             {
                 navMesh.isStopped = true;
-                Debug.Log("Atacando");
+                //Debug.Log("Atacando");
                 anim.SetTrigger("ataca");
                 anim.SetBool("podeAndar",false);
                 anim.SetBool("paraAtaque",false);
@@ -130,15 +148,31 @@ public class InimigoScalper : MonoBehaviour
 
      public void LevouDano(int dano)
     {
+        int n;
+
+        n = Random.Range(0,10);
+
+        if(n % 2 == 0 && !bravo)
+        {
+            ParaDeAndar();
+        }
+
+
+        ParaDeAndar();
         hp -= dano;
     }
 
     void ParaDeAndar()
     {
-        navMesh.isStopped = true;   
+        navMesh.isStopped = true;
+        anim.SetTrigger("levouTiro"); 
         anim.SetBool("podeAndar", false);
         CorrigeRigEntra();
     }
 
+    public void DaDanoPlayer()
+    {
+        player.GetComponent<MovimentaPersonagem>().hp -=10;
+    }
     
 }
