@@ -7,13 +7,16 @@ public class InimigoGooser : MonoBehaviour
 {
     public NavMeshAgent navMesh;
     public GameObject player;
-    public float distanciaDoAtaque = 15;
+    public float distanciaDoAtaque = 25;
     public float distanciaDoPlayer;
-    public float velocidade = 4;
+    public float velocidade = 6;
     Animator anim;
     public int hp = 200;
     public bool estaMorto;
     public Rigidbody rigid;
+
+    public GameObject pedraPermanente;
+    public GameObject pedraInstancia;
 
     // Start is called before the first frame update
     void Start()
@@ -41,9 +44,28 @@ public class InimigoGooser : MonoBehaviour
                 navMesh.isStopped = true;
                 navMesh.enabled = false;
                 CorrigeRigEntra();
+                anim.CrossFade("Standing React Death Left", 0.2f);
+                transform.gameObject.layer = 10;
+                anim.applyRootMotion = true;
             }
 
         }
+    }
+
+    public void InstaciaPedra()
+    {
+        pedraPermanente.SetActive(false);
+        GameObject pedra = Instantiate(pedraInstancia, anim.GetBoneTransform(HumanBodyBones.RightHand).transform);
+        pedra.transform.parent = null;
+        pedra.transform.LookAt(player.transform.position);
+        JogaPedra jogaScript = pedra.GetComponent<JogaPedra>();
+        jogaScript.Joga();
+            
+    }
+
+    public void AparecePedraPermanente()
+    {
+        pedraPermanente.SetActive(true);
     }
 
      void VaiAtrasJogador()
@@ -113,4 +135,10 @@ public class InimigoGooser : MonoBehaviour
     {
         rigid.isKinematic = false;
     }
+
+    public void LevouDano(int dano)
+    {
+        hp -= dano;
+    }
+
 }

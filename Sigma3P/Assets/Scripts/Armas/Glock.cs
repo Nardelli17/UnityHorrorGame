@@ -173,22 +173,20 @@ public class Glock : MonoBehaviour
         {
             if(hit.transform.tag == "inimigo")
             {
-                if(hit.rigidbody != null && hit.transform.GetComponentInParent<InimigoScalper>().estaMorto)
+               if(hit.transform.GetComponent<InimigoScalper>() || hit.transform.GetComponent<InimigoGooser>())
                 {
-                    AdicionaForca(ray,900);
+                    InimigoVerificadorDano();
                 }
-                else if(hit.transform.GetComponent<InimigoScalper>())
+                else if(hit.rigidbody != null && hit.transform.GetComponentInParent<InimigoScalper>())
                 {
-                hit.transform.GetComponent<InimigoScalper>().LevouDano(20);
+                    AdicionaForca(ray, 900);
                 }
-                else if(hit.transform.GetComponentInParent<InimigoScalper>())
+                else if(hit.rigidbody != null && hit.transform.GetComponentInParent<InimigoGooser>())
                 {
-                    hit.transform.GetComponentInParent<InimigoScalper>().LevouDano(20);
+                    AdicionaForca(ray, 900);
                 }
-                
-
-               GameObject particulaCriada = Instantiate(particulaSangue, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-               particulaCriada.transform.parent = hit.transform;
+                GameObject particulaCriada = Instantiate(particulaSangue, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                particulaCriada.transform.parent = hit.transform;
             }
             else
             {
@@ -204,6 +202,18 @@ public class Glock : MonoBehaviour
 
         yield return new WaitForSeconds(0.7f);
         estaAtirando =  false;
+    }
+
+    void InimigoVerificadorDano()
+    {
+        if (hit.transform.GetComponent<InimigoScalper>())
+        {
+            hit.transform.GetComponent<InimigoScalper>().LevouDano(20);
+        }
+        else if (hit.transform.GetComponent<InimigoGooser>())
+        {
+            hit.transform.GetComponent<InimigoGooser>().LevouDano(15);
+        }
     }
 
     void InstanciaEfeitos()
