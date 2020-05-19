@@ -21,6 +21,9 @@ public class InimigoScalper : MonoBehaviour
     public Renderer render;
     public bool invencivel;
 
+    public AudioClip[] sonsMonstro;
+    public AudioSource audioMonstro;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,7 @@ public class InimigoScalper : MonoBehaviour
         anim = GetComponent<Animator>();
         ragScript = GetComponent<RagDoll>();
         render = GetComponentInChildren<Renderer>();
+        audioMonstro = GetComponent<AudioSource>();
 
         invencivel = false;
         estaMorto = false;
@@ -58,6 +62,7 @@ public class InimigoScalper : MonoBehaviour
 
             if (hp <= 0 && !estaMorto)
             {
+                MorreSom();
                 render.material.color = Color.white;
                 objDesliza.SetActive(false);
                 estaMorto = true;
@@ -82,7 +87,7 @@ public class InimigoScalper : MonoBehaviour
 
         //inimigo percebe player e segue
         //Revisar essa parte do código
-        if(distanciaDoPlayer < 10)
+        if(distanciaDoPlayer < 30)
         {
         anim.SetBool("vaiParar",false);
         anim.SetBool("paraAtaque",true);
@@ -106,7 +111,7 @@ public class InimigoScalper : MonoBehaviour
                 CorrigeRigEntra();
             }
         }
-        if(distanciaDoPlayer >=15)
+        if(distanciaDoPlayer >=35)
         {
             anim.SetBool("podeAndar",false);
             anim.SetBool("vaiParar",true);
@@ -206,6 +211,33 @@ public class InimigoScalper : MonoBehaviour
     {
         invencivel = false;
         anim.speed = 2;
+    }
+
+    public void PassoMonstro()
+    {
+        audioMonstro.volume = 0.05f;
+        audioMonstro.PlayOneShot(sonsMonstro[0]);
+    }
+
+    public void SenteDor()
+    {
+        audioMonstro.volume = 0.05f;
+        audioMonstro.clip = sonsMonstro[1];
+        audioMonstro.Play();
+    }
+
+    public void GritaSom()
+    {
+        audioMonstro.volume = 0.5f;
+        audioMonstro.clip = sonsMonstro[2];
+        audioMonstro.Play();
+    }
+
+    public void MorreSom()
+    {
+        audioMonstro.volume = 0.7f;
+        audioMonstro.clip = sonsMonstro[3];
+        audioMonstro.Play();
     }
 
 }
