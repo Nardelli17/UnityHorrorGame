@@ -18,6 +18,10 @@ public class InimigoGooser : MonoBehaviour
     public GameObject pedraPermanente;
     public GameObject pedraInstancia;
 
+    public GameObject cabecaDesliza;
+    public AudioSource audioS;
+    public AudioClip[] sons;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,7 @@ public class InimigoGooser : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
         estaMorto = false;
+        audioS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,6 +45,9 @@ public class InimigoGooser : MonoBehaviour
 
             if(hp <= 0)
             {
+                audioS.clip = sons[0];
+                audioS.Play();
+                cabecaDesliza.SetActive(false);
                 estaMorto = true;
                 navMesh.isStopped = true;
                 navMesh.enabled = false;
@@ -139,6 +147,11 @@ public class InimigoGooser : MonoBehaviour
     public void LevouDano(int dano)
     {
         hp -= dano;
+    }
+
+    public void SomPassos()
+    {
+        audioS.PlayOneShot(sons[1]);
     }
 
 }
