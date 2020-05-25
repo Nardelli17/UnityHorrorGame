@@ -55,9 +55,19 @@ public class InimigoGooser : MonoBehaviour
                 anim.CrossFade("Standing React Death Left", 0.2f);
                 transform.gameObject.layer = 10;
                 anim.applyRootMotion = true;
+                StartCoroutine(SomeMorto());
             }
 
         }
+    }
+
+    IEnumerator SomeMorto()
+    {
+        yield return new WaitForSeconds(10);
+        rigid.isKinematic = false;
+        anim.enabled = false;
+        yield return new WaitForSeconds(3);
+        Destroy(this.gameObject);
     }
 
     public void InstaciaPedra()

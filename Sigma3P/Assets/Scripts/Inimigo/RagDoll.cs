@@ -39,7 +39,7 @@ public class RagDoll : MonoBehaviour
         }
     }
 
-     public void AtivaRagdoll()
+    public void AtivaRagdoll()
     {
         for (int i = 0; i < ragdollRigids.Count; i++)
         {
@@ -59,5 +59,14 @@ public class RagDoll : MonoBehaviour
         yield return new WaitForEndOfFrame();
         GetComponent<Animator>().enabled = false;
         this.enabled = false;
+    }
+
+    public IEnumerator SomeMorto()
+    {
+        yield return new WaitForSeconds(10);
+        rigid.isKinematic = false;
+        DesativaRagdoll();
+        yield return new WaitForSeconds(4);
+        Destroy(this.gameObject);
     }
 }

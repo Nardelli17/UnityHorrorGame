@@ -69,6 +69,7 @@ public class InimigoScalper : MonoBehaviour
                 ParaDeAndar();
                 navMesh.isStopped = false;
                 ragScript.AtivaRagdoll();
+                StartCoroutine(ragScript.SomeMorto());
                 
             }
         }
