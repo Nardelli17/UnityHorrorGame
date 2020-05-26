@@ -212,7 +212,7 @@ public class Glock : MonoBehaviour
         }
         else if (hit.transform.GetComponent<InimigoGooser>())
         {
-            hit.transform.GetComponent<InimigoGooser>().LevouDano(15);
+            hit.transform.GetComponent<InimigoGooser>().LevouDano(20);
         }
     }
 

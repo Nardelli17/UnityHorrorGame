@@ -56,6 +56,8 @@ public class InimigoGooser : MonoBehaviour
                 transform.gameObject.layer = 10;
                 anim.applyRootMotion = true;
                 StartCoroutine(SomeMorto());
+                GetComponent<DropItem>().Dropa();
+                pedraPermanente.SetActive(false);
             }
 
         }

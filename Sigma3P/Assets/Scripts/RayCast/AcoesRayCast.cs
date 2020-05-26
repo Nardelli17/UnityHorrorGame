@@ -11,12 +11,14 @@ namespace CSF
         public bool pegou;
         float distancia;
         public GameObject salvaObjeto;
+        MovimentaPersonagem scriptMovimenta;
 
         // Start is called before the first frame update
         void Start()
         {
             rayCastScript = GetComponent<RayCastScript>();
             pegou = false;
+            scriptMovimenta = GetComponentInParent<MovimentaPersonagem>();
         }
 
         // Update is called once per frame
@@ -65,6 +67,13 @@ namespace CSF
 
         void Pegar()
         {
+            //ganha vida
+            scriptMovimenta.hp += 50;
+            scriptMovimenta.hp = Mathf.Clamp(scriptMovimenta.hp, 0, 100);
+
+            //ganha municao e carregador
+            GetComponentInChildren<Glock>().carregador = 3;
+            GetComponentInChildren<Glock>().municao = 17;
             Destroy(rayCastScript.objPega);
         }
     }
