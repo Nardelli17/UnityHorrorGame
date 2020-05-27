@@ -21,7 +21,7 @@ public class DropItem : MonoBehaviour
     {
         int n = Random.Range(0, 10);
 
-        if(n > 5)
+        if(n > 2)
         {
             GameObject item = Instantiate(itemDrop, transform);
             item.GetComponent<Rigidbody>().AddForce((transform.up * 5 + transform.forward * 3), ForceMode.Impulse);
