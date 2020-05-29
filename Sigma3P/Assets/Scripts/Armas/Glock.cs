@@ -173,7 +173,7 @@ public class Glock : MonoBehaviour
         {
             if(hit.transform.tag == "inimigo")
             {
-               if(hit.transform.GetComponent<InimigoScalper>() || hit.transform.GetComponent<InimigoGooser>())
+               if(hit.transform.GetComponent<InimigoScalper>() || hit.transform.GetComponent<InimigoGooser>() || hit.transform.GetComponent<InimigoBoss>())
                 {
                     InimigoVerificadorDano();
                 }
@@ -182,6 +182,10 @@ public class Glock : MonoBehaviour
                     AdicionaForca(ray, 900);
                 }
                 else if(hit.rigidbody != null && hit.transform.GetComponentInParent<InimigoGooser>())
+                {
+                    AdicionaForca(ray, 900);
+                }
+                else if(hit.rigidbody != null && hit.transform.GetComponentInParent<InimigoBoss>())
                 {
                     AdicionaForca(ray, 900);
                 }
@@ -213,6 +217,10 @@ public class Glock : MonoBehaviour
         else if (hit.transform.GetComponent<InimigoGooser>())
         {
             hit.transform.GetComponent<InimigoGooser>().LevouDano(20);
+        }
+        else if (hit.transform.GetComponent<InimigoBoss>())
+        {
+            hit.transform.GetComponent<InimigoBoss>().LevouDano(20);
         }
     }
 
