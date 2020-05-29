@@ -20,10 +20,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 678, y: 492}
-  m_MaxSize: {x: 14001, y: 14042}
+  m_MinSize: {x: 679, y: 492}
+  m_MaxSize: {x: 14002, y: 14042}
   vertical: 1
-  controlID: 8356
+  controlID: 6451
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,10 +136,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 947
-  m_MinSize: {x: 678, y: 492}
-  m_MaxSize: {x: 14001, y: 14042}
+  m_MinSize: {x: 679, y: 492}
+  m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 8357
+  controlID: 6452
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 8358
+  controlID: 6453
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 8359
+  controlID: 6454
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -209,8 +209,8 @@ MonoBehaviour:
     y: 0
     width: 407
     height: 672
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 7}
   m_Panes:
   - {fileID: 7}
@@ -247,7 +247,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 70fbffff
+      m_ExpandedIDs: c604ffffd210ffff70fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -290,8 +290,8 @@ MonoBehaviour:
     y: 0
     width: 1024
     height: 672
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 9}
@@ -299,7 +299,7 @@ MonoBehaviour:
   - {fileID: 2}
   - {fileID: 11}
   m_Selected: 2
-  m_LastSelected: 3
+  m_LastSelected: 1
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -362,9 +362,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.746895, y: 1.0225716, z: 16.065794}
+    m_Target: {x: 1.7433592, y: 1.7582432, z: 5.9464216}
     speed: 2
-    m_Value: {x: 5.746895, y: 1.0225716, z: 16.065794}
+    m_Value: {x: 1.7433592, y: 1.7582432, z: 5.9464216}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -410,13 +410,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.12297863, y: 0.020530265, z: -0.0024792806, w: 0.99225813}
+    m_Target: {x: 0.17142661, y: 0.23226056, z: -0.04155672, w: 0.95659226}
     speed: 2
-    m_Value: {x: 0.12297078, y: 0.020528955, z: -0.0024791225, w: 0.99219483}
+    m_Value: {x: 0.17141566, y: 0.23224571, z: -0.041554064, w: 0.95653117}
   m_Size:
-    m_Target: 7.4797006
+    m_Target: 2.541392
     speed: 2
-    m_Value: 7.4797006
+    m_Value: 2.541392
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -539,14 +539,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.5097379
+    - e00: 0.5161821
       e01: 0
       e02: 0
-      e03: 48.92389
+      e03: 49.38115
       e10: 0
-      e11: 0.5097379
+      e11: 0.5161821
       e12: 0
-      e13: 247.83516
+      e13: 152.23358
       e20: 0
       e21: 0
       e22: 1
@@ -640,20 +640,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefab/InimigoBoss/Animacoes
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefab/InimigoBoss/Animacoes
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\User\Downloads\JogoUnity\UnityHorrorGame\Sigma3P
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 298}
-    m_SelectedIDs: 203b0000
-    m_LastClickedID: 15136
-    m_ExpandedIDs: 00000000c03a0000c23a0000c43a0000c63a0000c83a0000ca3a0000cc3a0000ce3a0000d03a0000d23a00001e3b000000ca9a3b
+    scrollPos: {x: 0, y: 246}
+    m_SelectedIDs: 283b0000
+    m_LastClickedID: 15144
+    m_ExpandedIDs: 00000000bc3a0000be3a0000c03a0000c23a0000c43a0000c63a0000c83a0000ca3a0000cc3a0000ce3a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -681,7 +681,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c03a0000c23a0000c43a0000c63a0000c83a0000ca3a0000cc3a0000ce3a0000d03a0000d23a000000ca9a3b
+    m_ExpandedIDs: 00000000bc3a0000be3a0000c03a0000c23a0000c43a0000c63a0000c83a0000ca3a0000cc3a0000ce3a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -706,10 +706,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 20350000
-    m_LastClickedInstanceID: 13600
+    m_SelectedInstanceIDs: 3203ffff
+    m_LastClickedInstanceID: -64718
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000003b0000f03a00005837000018350000d440000092550000843b0000544d000000000000c839ffff
+    m_ExpandedInstanceIDs: c6230000003b0000f03a00005837000018350000d440000092550000843b0000544d000000000000c839ffff08c50000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 13600
+  m_LastSelectedObjectID: -1570
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -811,8 +811,8 @@ MonoBehaviour:
     y: 0
     width: 489
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -855,8 +855,8 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
-  m_LastInspectedObjectInstanceID: 13600
-  m_LastVerticalScrollValue: 540
+  m_LastInspectedObjectInstanceID: -64718
+  m_LastVerticalScrollValue: 0
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52

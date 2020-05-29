@@ -2297,6 +2297,7 @@ GameObject:
   - component: {fileID: 19798578897442863}
   - component: {fileID: 19798578897442848}
   - component: {fileID: 531070536}
+  - component: {fileID: 1285396946}
   m_Layer: 0
   m_Name: InimgoScalper
   m_TagString: inimigo
@@ -2539,6 +2540,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1285396946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19798578897442849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d878bf77c1d0f4499ef93f7e369161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDrop: {fileID: 1728619453497436, guid: e7152d23c09aee845a9594ff1308f6a8, type: 3}
 --- !u!1 &19798578914614655
 GameObject:
   m_ObjectHideFlags: 0

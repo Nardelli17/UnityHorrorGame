@@ -7,7 +7,8 @@ public class InimigoBoss : MonoBehaviour
 {
     public NavMeshAgent navMesh;
     public GameObject player;
-    public float distanciaDoAtaque = 25;
+    public float distanciaDoAtaqueLongo = 25;
+    public float distanciaDoAtaquePerto = 6;
     public float distanciaDoPlayer;
     public float velocidade = 6;
     Animator anim;
@@ -57,10 +58,10 @@ public class InimigoBoss : MonoBehaviour
 
     IEnumerator SomeMorto()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(30);
         rigid.isKinematic = false;
         anim.enabled = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         Destroy(this.gameObject);
     }
 
@@ -75,25 +76,37 @@ public class InimigoBoss : MonoBehaviour
         anim.SetBool("vaiParar",false);
         navMesh.SetDestination(player.transform.position);
         anim.SetBool("joga",false);
+        anim.SetBool("ataca",false);
         navMesh.isStopped = false;
         CorrigeRigSai();
 
-            if(distanciaDoPlayer <= distanciaDoAtaque)
+            if(distanciaDoPlayer <= distanciaDoAtaquePerto)
+            {
+                navMesh.isStopped = true;
+                anim.SetBool("joga",false);
+                anim.SetBool("ataca",true);
+                CorrigeRigEntra();
+            }
+            else if(distanciaDoPlayer > distanciaDoAtaquePerto && distanciaDoPlayer <= distanciaDoAtaqueLongo)
             {
                 navMesh.isStopped = true;
                 anim.SetBool("joga",true);
+                anim.SetBool("ataca",false);
                 CorrigeRigEntra();
             }
+            
         }
         if(distanciaDoPlayer >=35)
         {
             anim.SetBool("vaiParar",true);
             anim.SetBool("joga",false);
+            anim.SetBool("ataca",false);
             navMesh.isStopped = true;
         }
         if(anim.GetBool("vaiParar"))
         {
             anim.SetBool("joga",false);
+            anim.SetBool("ataca",false);
             navMesh.isStopped = true;
         }
     }

@@ -1885,7 +1885,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8737732669964436325}
-  m_LocalRotation: {x: -0, y: 0.9999715, z: -0, w: 0.0075471043}
+  m_LocalRotation: {x: 0, y: 0.9999715, z: 0, w: 0.007548492}
   m_LocalPosition: {x: 15.55, y: 0, z: 19.98}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
@@ -1979,13 +1979,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMesh: {fileID: 0}
   player: {fileID: 0}
-  distanciaDoAtaque: 25
+  distanciaDoAtaqueLongo: 25
+  distanciaDoAtaquePerto: 6
   distanciaDoPlayer: 0
   velocidade: 6
-  hp: 200
+  hp: 100
   estaMorto: 0
   rigid: {fileID: 0}
-  cabecaDesliza: {fileID: 0}
   audioS: {fileID: 0}
   sons: []
 --- !u!1 &8796709741679103652

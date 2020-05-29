@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -121,7 +121,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: a58845b8d972b0b4cadcc8976d23398b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c1064f8b21bb7624da96c1b7d1d0c657, type: 2}
 --- !u!1 &21603430
 GameObject:
   m_ObjectHideFlags: 0
@@ -5349,7 +5349,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &160770821
 GameObject:
@@ -5426,25 +5426,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160770821}
   m_CullTransparentMesh: 0
---- !u!1 &166112424 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7404839862539241179, guid: 7678dafbe07c2374f8205f4c7cf9c164,
-    type: 3}
-  m_PrefabInstance: {fileID: 1577011424489852709}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &166112425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166112424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d878bf77c1d0f4499ef93f7e369161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDrop: {fileID: 1728619453497436, guid: e7152d23c09aee845a9594ff1308f6a8, type: 3}
 --- !u!1 &206444799
 GameObject:
   m_ObjectHideFlags: 0
@@ -6795,7 +6776,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &753801022
 GameObject:
@@ -7053,7 +7034,7 @@ RectTransform:
   m_Children:
   - {fileID: 206444800}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7933,25 +7914,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282575113}
   m_CullTransparentMesh: 0
---- !u!1 &1285396945 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 19798578897442849, guid: 7e48ba5d3957264469168d278d5f59af,
-    type: 3}
-  m_PrefabInstance: {fileID: 19798579261581751}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1285396946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285396945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d878bf77c1d0f4499ef93f7e369161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDrop: {fileID: 1728619453497436, guid: e7152d23c09aee845a9594ff1308f6a8, type: 3}
 --- !u!1 &1339662870
 GameObject:
   m_ObjectHideFlags: 0
@@ -8196,7 +8158,7 @@ Transform:
   m_Children:
   - {fileID: 1942067436}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1933952820
 GameObject:
@@ -8372,11 +8334,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InimgoScalper
       objectReference: {fileID: 0}
-    - target: {fileID: 19798578897442849, guid: 7e48ba5d3957264469168d278d5f59af,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 19798578897442858, guid: 7e48ba5d3957264469168d278d5f59af,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8415,7 +8372,7 @@ PrefabInstance:
     - target: {fileID: 19798578897442858, guid: 7e48ba5d3957264469168d278d5f59af,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 19798578897442858, guid: 7e48ba5d3957264469168d278d5f59af,
         type: 3}
@@ -8441,16 +8398,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 748517312137046081, guid: 232ed0552d3e462489ced0591263de75,
-        type: 3}
-      propertyPath: hp
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 748517312137046081, guid: 232ed0552d3e462489ced0591263de75,
-        type: 3}
-      propertyPath: estaMorto
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5699851001618018678, guid: 232ed0552d3e462489ced0591263de75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8489,7 +8436,7 @@ PrefabInstance:
     - target: {fileID: 5699851001618018678, guid: 232ed0552d3e462489ced0591263de75,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5699851001618018678, guid: 232ed0552d3e462489ced0591263de75,
         type: 3}
@@ -8520,16 +8467,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1577011426049984533, guid: 7678dafbe07c2374f8205f4c7cf9c164,
-        type: 3}
-      propertyPath: sons.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 35f2e2e6640e5b74e9979d83f30407d6, type: 3}
-    - target: {fileID: 1577011426049984533, guid: 7678dafbe07c2374f8205f4c7cf9c164,
-        type: 3}
-      propertyPath: sons.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 0ecec9a3d9c7c0742a0706028628469e, type: 3}
     - target: {fileID: 5807426112365212872, guid: 7678dafbe07c2374f8205f4c7cf9c164,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8568,7 +8505,7 @@ PrefabInstance:
     - target: {fileID: 5807426112365212872, guid: 7678dafbe07c2374f8205f4c7cf9c164,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5807426112365212872, guid: 7678dafbe07c2374f8205f4c7cf9c164,
         type: 3}
@@ -8589,16 +8526,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InimigoGooser
-      objectReference: {fileID: 0}
-    - target: {fileID: 7404839862539241179, guid: 7678dafbe07c2374f8205f4c7cf9c164,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296172668852275711, guid: 7678dafbe07c2374f8205f4c7cf9c164,
-        type: 3}
-      propertyPath: rolloffMode
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7678dafbe07c2374f8205f4c7cf9c164, type: 3}
